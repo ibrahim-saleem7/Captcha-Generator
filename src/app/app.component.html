@@ -1,0 +1,19 @@
+<div class="container">
+  <header>Captcha Generator</header>
+  <div><p>{{timer}}</p></div>
+  <div class="input_field captch_box">
+    <input type="text" value="{{displayCapttion}}" disabled />
+    <button class="refresh_button" (click)="refresh()">
+      <i class="fa-solid fa-rotate-right"></i>
+    </button>
+  </div>
+  <div class="input_field captch_input">
+    <input type="text" placeholder="Enter captcha" (change)="emptySolution()" [(ngModel)]="inputCapttion"  />
+  </div>
+  <div *ngIf="valid"  class="message">Entered captcha is correct</div>
+  <div *ngIf="inValid" class="message">Entered captcha is not correct</div>
+  <div *ngIf="empty" class="message">Please enter captcha</div>
+  <div class="input_field button " >
+    <button [disabled]="inputCapttion.length < 5" (click)="send()" >Submit Captcha</button>
+  </div>
+</div>
